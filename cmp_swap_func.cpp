@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include "cmp_swap_func.h"
 
 void int_swap(int* first_num, int* second_num)
 {
@@ -25,13 +26,21 @@ int str_order(const char first_str[], const char second_str[])
     
     size_t i = 0;
     for (i = 0; first_str[i] != '\0' && second_str[i] != '\0'; i++)
-        if (first_str[i] != second_str[i])
-            if (toupper(first_str[i]) != toupper(second_str[i]))
-            {
-                printf("str_order = %3d\n", toupper(first_str[i]) - toupper(second_str[i]));
-                return toupper(first_str[i]) - toupper(second_str[i]);
-            }
+        if (are_symb_inequal(first_str[i], second_str[i]))
+        {
+            printf("str_order = %5d\n", toupper(first_str[i]) - toupper(second_str[i]));
+            return toupper(first_str[i]) - toupper(second_str[i]);
+        }
 
-    printf("str_order = %3d\n", first_str[i] - second_str[i]);
+    printf("str_order = %5d\n", first_str[i] - second_str[i]);
     return first_str[i] - second_str[i];
+}
+
+int are_symb_inequal(char first_symb, char second_symb)
+{
+    if (first_symb != second_symb)
+        if (toupper(first_symb) != toupper(second_symb))                
+            return true;
+    
+    return false;
 }
