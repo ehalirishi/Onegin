@@ -21,8 +21,7 @@ int main(void)
                          "Puffing the pillows, you contrive",
                          "To bring his medicine unsmiling,",
                          "Thinking with a mournful sigh,",
-                         "“Why the devil can\'t you die?”’"};
+                         "\"Why the devil can\'t you die?\"\'"};
 
-    
     return 0;
 }
