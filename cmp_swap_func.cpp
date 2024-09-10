@@ -24,23 +24,41 @@ int str_order(const char first_str[], const char second_str[])
 {
     printf("Comparing \"%35s\" and \"%35s\": ", first_str, second_str);
     
-    size_t i = 0;
-    for (i = 0; first_str[i] != '\0' && second_str[i] != '\0'; i++)
-        if (are_symb_inequal(first_str[i], second_str[i]))
+    size_t first_i = 0, second_i = 0; // Two different counters are needed to ignore punctuation and space symbols
+    while (first_str[first_i] != '\0' && second_str[second_i] != '\0')
+    {
+        if (are_symb_inequal(first_str[first_i], second_str[second_i]))
         {
-            printf("str_order = %5d\n", toupper(first_str[i]) - toupper(second_str[i]));
-            return toupper(first_str[i]) - toupper(second_str[i]);
-        }
+            if (ispunct(first_str[first_i]) || isspace(first_str[first_i]))
+            {
+                first_i++;
+                continue;
+            }
 
-    printf("str_order = %5d\n", first_str[i] - second_str[i]);
-    return first_str[i] - second_str[i];
+            if (ispunct(second_str[second_i]) || isspace(second_str[second_i]))
+            {
+                second_i++;
+                continue;
+            }
+            
+            printf("str_order = %5d\n", 
+                   toupper(first_str[first_i]) - toupper(second_str[second_i]));
+            return toupper(first_str[first_i]) - toupper(second_str[second_i]);
+        }
+        first_i++;
+        second_i++;
+    }
+
+    printf("str_order = %5d\n", first_str[first_i] - second_str[second_i]);
+    return first_str[first_i] - second_str[second_i];
 }
 
 int are_symb_inequal(char first_symb, char second_symb)
-{
+{   
     if (first_symb != second_symb)
         if (toupper(first_symb) != toupper(second_symb))                
             return true;
     
     return false;
 }
+

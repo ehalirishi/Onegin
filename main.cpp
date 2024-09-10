@@ -23,10 +23,10 @@ int main(void)
                          "Thinking with a mournful sigh,",
                          "\"Why the devil can\'t you die?\"\'"};
 
-    str_order("AbCd", "ABcd");
-    str_order("AbCd", "bACD");
-    str_order("KoT", "KOTiK");
-    str_order("Dawg", "kotIK");
+    str_order("Ab//Cd", "A..Bcd");
+    str_order("Ab,Cd", "  \tabCD");
+    str_order("K{}oTik", "KOTiK");
+    str_order("[Dawg", "kotIK");
 
     return 0;
 }
