@@ -11,7 +11,6 @@ void int_swap(int* first_num, int* second_num)
     *second_num = temporary;
 }
 
-
 // returns > 0 if you need to swap and <= 0 if you don't need to
 int int_cmp(int first_num, int second_num)
 {
@@ -64,4 +63,21 @@ int are_symb_inequal(char first_symb, char second_symb)
 int need_to_skip(char symb)
 {
     return ispunct(symb) || isspace(symb);
+}
+
+void str_swap(char first_str[], char second_str[])
+{
+    char temporary_str[NUM_OF_SYMBOLS] = {};
+    size_t i = 0;
+    copy_str(temporary_str,     first_str);
+    copy_str(    first_str,    second_str);
+    copy_str(   second_str, temporary_str);
+}
+
+void copy_str(char* receiving_str, const char* copied_str)
+{
+    size_t i = 0;
+    
+    for (i = 0; i < NUM_OF_SYMBOLS; i++)
+        receiving_str[i] = copied_str[i];
 }

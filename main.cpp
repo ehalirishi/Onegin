@@ -2,9 +2,6 @@
 #include "my_sorts.h"
 #include "cmp_swap_func.h"
 
-#define NUM_OF_STRINGS 14
-#define NUM_OF_SYMBOLS 50
-
 int main(void)
 {
     char text[NUM_OF_STRINGS][NUM_OF_SYMBOLS] = 
@@ -23,10 +20,8 @@ int main(void)
                          "Thinking with a mournful sigh,",
                          "\"Why the devil can\'t you die?\"\'"};
 
-    str_order("Ab//Cd", "A..Bcd");
-    str_order("Ab,Cd", "  \tabCD");
-    str_order("K{}oTik", "KOTiK");
-    str_order("Dawg", "kotIK-*/");
+    
+    my_str_bubble_sort(text);
 
     return 0;
 }

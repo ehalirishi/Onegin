@@ -24,5 +24,28 @@ void my_int_bubble_sort(int arr[], size_t arr_size)
     print_arr(arr, arr_size);
 }
 
+void my_str_bubble_sort(char text[][NUM_OF_SYMBOLS])
+{    
+    size_t i = 0, j = 0;
+    printf("Your text before sorting:\n");
+    for (i = 0; i < NUM_OF_STRINGS; i++)
+        puts(text[i]);
+    
+    
+    for (i = 0; i < NUM_OF_STRINGS - 1; i++)
+        for (j = 0; j < NUM_OF_STRINGS - i - 1; j++)
+        {    
+            assert (j < NUM_OF_STRINGS);
+            assert (j + 1 < NUM_OF_STRINGS);
+            
+            if (str_order(text[j], text[j + 1]) > 0)
+                str_swap(text[j], text[j + 1]);
+        }
+
+    printf("Your text after sorting:\n");
+    for (i = 0; i < NUM_OF_STRINGS; i++)
+        puts(text[i]);
+}
+
 
 
