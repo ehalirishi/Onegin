@@ -26,7 +26,7 @@ int main(void)
     str_order("Ab//Cd", "A..Bcd");
     str_order("Ab,Cd", "  \tabCD");
     str_order("K{}oTik", "KOTiK");
-    str_order("[Dawg", "kotIK");
+    str_order("Dawg", "kotIK-*/");
 
     return 0;
 }

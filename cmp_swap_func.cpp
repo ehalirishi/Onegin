@@ -29,13 +29,12 @@ int str_order(const char first_str[], const char second_str[])
     {
         if (are_symb_inequal(first_str[first_i], second_str[second_i]))
         {
-            if (ispunct(first_str[first_i]) || isspace(first_str[first_i]))
+            if (need_to_skip(first_str[first_i])) 
             {
                 first_i++;
                 continue;
             }
-
-            if (ispunct(second_str[second_i]) || isspace(second_str[second_i]))
+            if (need_to_skip(second_str[second_i])) 
             {
                 second_i++;
                 continue;
@@ -62,3 +61,7 @@ int are_symb_inequal(char first_symb, char second_symb)
     return false;
 }
 
+int need_to_skip(char symb)
+{
+    return ispunct(symb) || isspace(symb);
+}
