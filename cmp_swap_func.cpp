@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include "cmp_swap_func.h"
+#include "input_output.h"
 
 void int_swap(int* first_num, int* second_num)
 {
@@ -21,33 +22,36 @@ int int_cmp(int first_num, int second_num)
 // returns > 0 if you need to swap and <= 0 if you don't need to
 int str_order(const char first_str[], const char second_str[])
 {
-    printf("Comparing \"%35s\" and \"%35s\": ", first_str, second_str);
+    /*printf("Comparing ");
+    my_puts(first_str);
+    printf("and ");
+    my_puts(second_str);*/
     
     size_t first_i = 0, second_i = 0; // Two different counters are needed to ignore punctuation and space symbols
-    while (first_str[first_i] != '\0' && second_str[second_i] != '\0')
+    while (first_str[first_i] != '\n' && second_str[second_i] != '\n')
     {
         if (are_symb_inequal(first_str[first_i], second_str[second_i]))
         {
-            if (need_to_skip(first_str[first_i])) 
+            if (need_to_skip(first_str[first_i])) // skip_spaces(...) // FIXME: подумай!
             {
                 first_i++;
                 continue;
             }
-            if (need_to_skip(second_str[second_i])) 
+            if (need_to_skip(second_str[second_i]))     // It feels that you can make a function for this, but I'm not sure
             {
                 second_i++;
                 continue;
             }
             
-            printf("str_order = %5d\n", 
-                   toupper(first_str[first_i]) - toupper(second_str[second_i]));
+            /*printf("str_order = %5d\n", 
+                   toupper(first_str[first_i]) - toupper(second_str[second_i]));*/
             return toupper(first_str[first_i]) - toupper(second_str[second_i]);
         }
         first_i++;
         second_i++;
     }
 
-    printf("str_order = %5d\n", first_str[first_i] - second_str[second_i]);
+    //printf("str_order = %5d\n", first_str[first_i] - second_str[second_i]);
     return first_str[first_i] - second_str[second_i];
 }
 
@@ -64,7 +68,7 @@ int need_to_skip(char symb)
 {
     return ispunct(symb) || isspace(symb);
 }
-
+ /*
 void str_swap(char first_str[], char second_str[])
 {
     char temporary_str[NUM_OF_SYMBOLS] = {};
@@ -72,6 +76,14 @@ void str_swap(char first_str[], char second_str[])
     copy_str(temporary_str,     first_str);
     copy_str(    first_str,    second_str);
     copy_str(   second_str, temporary_str);
+}
+*/
+
+void str_swap(char** first_string, char** second_string)
+{
+    char* temporary = *first_string;
+    *first_string = *second_string;
+    *second_string = temporary;
 }
 
 void copy_str(char* receiving_str, const char* copied_str)
