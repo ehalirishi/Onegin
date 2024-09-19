@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
-#include "my_sorts.h"
-#include "input_output.h"
-#include "cmp_swap_func.h"
+#include "my_sorts.hpp"
+#include "input_output.hpp"
+#include "cmp_swap_func.hpp"
 
 void my_int_bubble_sort(int arr[], size_t arr_size)
 {

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "my_sorts.h"
-#include "cmp_swap_func.h"
-#include "input_output.h"
+#include "my_sorts.hpp"
+#include "cmp_swap_func.hpp"
+#include "input_output.hpp"
 
 #define ONEGIN "Onegin_original.txt"
 

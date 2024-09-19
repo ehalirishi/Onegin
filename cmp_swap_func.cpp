@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
-#include "cmp_swap_func.h"
-#include "input_output.h"
+#include "cmp_swap_func.hpp"
+#include "input_output.hpp"
 
 void int_swap(int* first_num, int* second_num)
 {

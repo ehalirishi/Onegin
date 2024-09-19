@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "cmp_swap_func.h"
+#include "cmp_swap_func.hpp"
 
 void my_int_bubble_sort(int arr[], size_t arr_size);
 

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <errno.h>
-#include "input_output.h"
+#include "input_output.hpp"
 
 void print_arr(int arr[], size_t arr_size)
 {
