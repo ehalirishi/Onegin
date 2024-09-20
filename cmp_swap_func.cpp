@@ -32,14 +32,10 @@ int str_order(const char first_str[], const char second_str[])
     {
         if (are_symb_inequal(first_str[first_i], second_str[second_i]))
         {
-            if (need_to_skip(first_str[first_i])) // skip_spaces(...) // FIXME: подумай!
-            {
-                first_i++;
+            if (skip_non_letter(first_str[first_i], &first_i)) {
                 continue;
             }
-            if (need_to_skip(second_str[second_i]))     // It feels that you can make a function for this, but I'm not sure
-            {
-                second_i++;
+            if (skip_non_letter(second_str[second_i], &second_i)) {
                 continue;
             }
             
@@ -68,28 +64,21 @@ int need_to_skip(char symb)
 {
     return ispunct(symb) || isspace(symb);
 }
- /*
-void str_swap(char first_str[], char second_str[])
+
+int skip_non_letter(const char symb, size_t* index)
 {
-    char temporary_str[NUM_OF_SYMBOLS] = {};
-    size_t i = 0;
-    copy_str(temporary_str,     first_str);
-    copy_str(    first_str,    second_str);
-    copy_str(   second_str, temporary_str);
+    if (!isalpha(symb))
+    {
+        (*index)++;
+        return true;
+    }
+
+    return false;
 }
-*/
 
 void str_swap(char** first_string, char** second_string)
 {
     char* temporary = *first_string;
     *first_string = *second_string;
     *second_string = temporary;
-}
-
-void copy_str(char* receiving_str, const char* copied_str)
-{
-    size_t i = 0;
-    
-    for (i = 0; i < NUM_OF_SYMBOLS; i++)
-        receiving_str[i] = copied_str[i];
 }
