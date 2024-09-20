@@ -4,10 +4,17 @@
 #include "cmp_swap_func.hpp"
 #include "input_output.hpp"
 
-int main(void)
+int main(int argc, const char** argv)
 {
+    if (argc != 2) 
+    {
+        printf("Error, please enter \"Onegin <file_name>.txt\"\n");
+        return 1;
+    } 
+    else
+    {
     text_t book = {};
-    book.file_name = "Onegin_original.txt";
+    book.file_name = argv[1];
     
     book.copied_text_len = get_file_size(&book);
     book.copied_text = safe_calloc_for_copy(&book);
@@ -19,11 +26,11 @@ int main(void)
 
     printf(">>>     copied_text = %p\n",     book.copied_text);
     printf(">>> copied_text_len = %zd\n", book.copied_text_len);
-    getchar();
 
     size_t string_num = num_of_strings(&book);
 
     printf(">>> string_num = %zd\n", string_num);
+    getchar();
 
     char** str_addresses = (char**) calloc(string_num, sizeof(char*));
 
@@ -39,4 +46,5 @@ int main(void)
     free(str_addresses);
 
     return 0;
+    }
 }

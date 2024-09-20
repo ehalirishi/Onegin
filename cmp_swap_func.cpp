@@ -3,22 +3,6 @@
 #include "cmp_swap_func.hpp"
 #include "input_output.hpp"
 
-void int_swap(int* first_num, int* second_num)
-{
-    int temporary = 0;
-    printf("Swapping  % 5d and % 5d\n", *first_num, *second_num);
-    temporary = *first_num;
-    *first_num = *second_num;
-    *second_num = temporary;
-}
-
-// returns > 0 if you need to swap and <= 0 if you don't need to
-int int_cmp(int first_num, int second_num)
-{
-    printf("Comparing % 5d and % 5d\n", first_num, second_num);
-    return first_num - second_num;
-}
-
 // returns > 0 if you need to swap and <= 0 if you don't need to
 int str_order(const char first_str[], const char second_str[])
 {
@@ -60,11 +44,6 @@ int are_symb_inequal(char first_symb, char second_symb)
     return false;
 }
 
-int need_to_skip(char symb)
-{
-    return ispunct(symb) || isspace(symb);
-}
-
 int skip_non_letter(const char symb, size_t* index)
 {
     if (!isalpha(symb))
@@ -76,7 +55,7 @@ int skip_non_letter(const char symb, size_t* index)
     return false;
 }
 
-void str_swap(char** first_string, char** second_string)
+void str_p_swap(char** first_string, char** second_string)
 {
     char* temporary = *first_string;
     *first_string = *second_string;

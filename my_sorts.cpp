@@ -19,7 +19,7 @@ void my_str_bubble_sort(char* str_addresses[], size_t string_num)
             assert (j + 1 < string_num);
             
             if (str_order(str_addresses[j], str_addresses[j + 1]) > 0)
-                str_swap(&str_addresses[j], &str_addresses[j + 1]);
+                str_p_swap(&str_addresses[j], &str_addresses[j + 1]);
         }
 
     printf("\n\nYour text after sorting:\n\n");
