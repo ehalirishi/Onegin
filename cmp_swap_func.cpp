@@ -14,17 +14,12 @@ int str_order(const char first_str[], const char second_str[])
     size_t first_i = 0, second_i = 0; // Two different counters are needed to ignore punctuation and space symbols
     while (first_str[first_i] != '\n' && second_str[second_i] != '\n')
     {
+        skip_to_letter( first_str,  &first_i);
+        skip_to_letter(second_str, &second_i);
+        
         if (are_symb_inequal(first_str[first_i], second_str[second_i]))
-        {
-            if (skip_non_letter(first_str[first_i], &first_i)) {
-                continue;
-            }
-            if (skip_non_letter(second_str[second_i], &second_i)) {
-                continue;
-            }
-            
-            /*printf("str_order = %5d\n", 
-                   toupper(first_str[first_i]) - toupper(second_str[second_i]));*/
+        {            
+            //printf("str_order = %5d\n", toupper(first_str[first_i]) - toupper(second_str[second_i]));
             return toupper(first_str[first_i]) - toupper(second_str[second_i]);
         }
         first_i++;
@@ -33,7 +28,7 @@ int str_order(const char first_str[], const char second_str[])
 
     //printf("str_order = %5d\n", first_str[first_i] - second_str[second_i]);
     return first_str[first_i] - second_str[second_i];
-}
+} // kal
 
 int are_symb_inequal(char first_symb, char second_symb)
 {   
@@ -44,15 +39,14 @@ int are_symb_inequal(char first_symb, char second_symb)
     return false;
 }
 
-int skip_non_letter(const char symb, size_t* index)
+void skip_to_letter(const char str[], size_t* index)
 {
-    if (!isalpha(symb))
+    //printf(">>> skip_to_letter(): \n");
+    while ((isalpha(str[*index]) == false) && (str[*index] != '\n')) 
     {
+        //printf("str[*index] = %c\n", str[*index]);
         (*index)++;
-        return true;
     }
-
-    return false;
 }
 
 void str_p_swap(char** first_string, char** second_string)

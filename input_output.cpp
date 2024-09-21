@@ -34,7 +34,7 @@ void find_str_addresses(const char copied_text[], char* str_address[], size_t co
             str_address[address_i] = (char*) &copied_text[i + 1];
         }
     }
-}
+} // EOF праверь
 
 void my_puts(const char str[])
 {

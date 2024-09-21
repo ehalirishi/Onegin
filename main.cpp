@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include "my_sorts.hpp"
 #include "cmp_swap_func.hpp"
 #include "input_output.hpp"
@@ -22,7 +23,7 @@ int main(int argc, const char** argv)
     
     copy_text_from_file(&book, original_text);
 
-    fclose(original_text); // We won't need it anymore  
+    fclose(original_text); // We won't need it anymore 
 
     printf(">>>     copied_text = %p\n",     book.copied_text);
     printf(">>> copied_text_len = %zd\n", book.copied_text_len);
